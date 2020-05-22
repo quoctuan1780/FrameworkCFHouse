@@ -178,9 +178,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Encrypt.cs" />
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DonhangController.cs" />
+    <Compile Include="Controllers\KhachhangController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1592,6 +1597,11 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Admin\Phanhoimoi.cshtml" />
+    <Content Include="Views\Khachhang\Dangkinhantinmoi.cshtml" />
+    <Content Include="Views\Admin\Donhangmoi.cshtml" />
+    <Content Include="Views\Donhang\Danhsachdonhang.cshtml" />
+    <Content Include="Views\Donhang\Chitietdonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\bower_components\sweetalert\src\core.ts" />

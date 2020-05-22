@@ -39,19 +39,23 @@
                         @*<form role="form" action="#" method="POST">*@
                         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                         {
-                        <fieldset>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                @Html.TextBoxFor(model=>model.userName, new { @class="form-control", @placeholder="Username", @name="username", @required = "required" })
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                @Html.PasswordFor(model => model.password, new { @class = "form-control", @placeholder = "Password", @name = "password", @required = "required" })
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
-                        </fieldset>
+                            if (!Html.ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" });
+                            }
+                            <fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    @Html.TextBoxFor(model => model.userName, new { @class = "form-control", @placeholder = "Username", @name = "username", @required = "required" })
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    @Html.PasswordFor(model => model.password, new { @class = "form-control", @placeholder = "Password", @name = "password", @required = "required" })
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
+                            </fieldset>
                         }
                         <div class="panel-body"><a href="#">Quên mật khẩu</a></div>
                     </div>

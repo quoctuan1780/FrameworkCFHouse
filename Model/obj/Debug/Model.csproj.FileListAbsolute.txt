@@ -35,3 +35,5 @@ D:\DATA\CHAdmin\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\DATA\CHAdmin\Model\obj\Debug\Model.csproj.CopyComplete
 D:\DATA\CHAdmin\Model\obj\Debug\Model.dll
 D:\DATA\CHAdmin\Model\obj\Debug\Model.pdb
+D:\DATA\CHAdmin\Model\bin\Debug\Newtonsoft.Json.dll
+D:\DATA\CHAdmin\Model\bin\Debug\Newtonsoft.Json.xml

@@ -22,7 +22,7 @@ namespace CHAdmin.Controllers
         public ActionResult Login(loginModel model)
         {
             var dao = new DangnhapDao();
-            var result = dao.Login(model.userName, model.password);
+            var result = dao.Login(model.userName, Encrypt.MD5Hash(model.password));
             if (result == false) Console.WriteLine("Lỗi");
             if (result)
             {
@@ -35,7 +35,7 @@ namespace CHAdmin.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Đăng nhập không đúng");
+                ModelState.AddModelError("", "Email hoặc password không đúng");
             }
             return View(model);
         }
