@@ -6,7 +6,7 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.dknt")]
+    [Table("coffee-house.dknt")]
     public partial class dknt
     {
         [Column(TypeName = "uint")]
@@ -16,12 +16,6 @@ namespace Model.EF
         [Required]
         [StringLength(65535)]
         public string email { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime ngaydk { get; set; }

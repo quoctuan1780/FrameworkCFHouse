@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Crypto.Agreement;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,6 +150,41 @@ namespace Model.Dao
                 chitietdonhangs.Add(ct);
             }
             return chitietdonhangs;
+        }
+
+        public bool Thanhtoandonhang(int madh)
+        {
+            DateTime date = DateTime.Now.Date;
+            date.ToString("yyyy-MM-dd");
+            var ctdh = db.ctdhs.Where(x => x.madh == madh);
+            int mahd;
+            Model.EF.donhang dh;
+            using (var context = new CoffeeHouse())
+            {
+                dh = context.donhangs.Where(x => x.madh == madh).FirstOrDefault();
+                hoadon hd = new hoadon();
+                hd.makh = (long) dh.makh;
+                hd.ngaythanhtoan = date;
+                hd.tongtien = dh.tongtien;
+                hd.httt = dh.httt;
+                context.hoadons.Add(hd);
+                context.SaveChanges();
+                mahd = (int)hd.mahd;
+            }
+            
+            foreach(var ct in ctdh)
+            {
+                cthd cthd = new cthd();
+                cthd.mahd = mahd;
+                cthd.masp = ct.masp;
+                cthd.soluong = ct.soluong;
+                cthd.gia = ct.gia;
+                db.cthds.Add(cthd);
+            }
+            dh.tttt = 1;
+            db.donhangs.AddOrUpdate(dh);
+            db.SaveChanges();
+            return true;
         }
     }
 }

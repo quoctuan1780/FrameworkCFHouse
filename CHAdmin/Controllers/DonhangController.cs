@@ -31,6 +31,14 @@ namespace CHAdmin.Controllers
             return View();
         }
 
+        public string Thanhtoandonhang(int madh)
+        {
+            DonhangDao donhangDao = new DonhangDao();
+            bool kiemtraThanhtoan = donhangDao.Thanhtoandonhang(madh);
+            if (kiemtraThanhtoan) return "ok";
+            else
+                return "thanhtoanloi";
+        }
         public string Donhangtheotrangthai(int tt)
         {
             AjaxDao ajaxDao = new AjaxDao();

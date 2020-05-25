@@ -186,6 +186,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DonhangController.cs" />
     <Compile Include="Controllers\KhachhangController.cs" />
+    <Compile Include="Controllers\LoaisanphamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1602,6 +1603,10 @@
     <Content Include="Views\Admin\Donhangmoi.cshtml" />
     <Content Include="Views\Donhang\Danhsachdonhang.cshtml" />
     <Content Include="Views\Donhang\Chitietdonhang.cshtml" />
+    <Content Include="Views\Khachhang\Danhsachkhachhang.cshtml" />
+    <Content Include="Views\Khachhang\Dangkinhantin.cshtml" />
+    <Content Include="Views\Loaisanpham\Danhsachloaisanpham.cshtml" />
+    <Content Include="Views\Loaisanpham\Themloaisanpham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\bower_components\sweetalert\src\core.ts" />

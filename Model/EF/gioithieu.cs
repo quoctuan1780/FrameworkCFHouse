@@ -6,11 +6,12 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.gioithieu")]
+    [Table("coffee-house.gioithieu")]
     public partial class gioithieu
     {
         [Key]
         [Column(TypeName = "uint")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long magt { get; set; }
 
         public int? nam { get; set; }
@@ -25,11 +26,5 @@ namespace Model.EF
 
         [StringLength(255)]
         public string hinhanh { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
     }
 }

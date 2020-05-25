@@ -6,9 +6,16 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.sanpham")]
+    [Table("coffee-house.sanpham")]
     public partial class sanpham
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public sanpham()
+        {
+            ctdhs = new HashSet<ctdh>();
+            cthds = new HashSet<cthd>();
+        }
+
         [Key]
         [Column(TypeName = "uint")]
         public long masp { get; set; }
@@ -35,10 +42,15 @@ namespace Model.EF
 
         public sbyte? moi { get; set; }
 
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime ngaynhap { get; set; }
 
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ctdh> ctdhs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cthd> cthds { get; set; }
+
+        public virtual loaisanpham loaisanpham { get; set; }
     }
 }

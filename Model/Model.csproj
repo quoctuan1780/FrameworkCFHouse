@@ -107,9 +107,9 @@
     <Compile Include="Dao\DangnhapDao.cs" />
     <Compile Include="Dao\DonhangDao.cs" />
     <Compile Include="Dao\KhachhangDao.cs" />
+    <Compile Include="Dao\LoaisanphamDao.cs" />
     <Compile Include="Dao\PhanhoiDao.cs" />
     <Compile Include="Dao\TrangchuDao.cs" />
-    <Compile Include="EF\activation.cs" />
     <Compile Include="EF\CoffeeHouse.cs" />
     <Compile Include="EF\ctdh.cs" />
     <Compile Include="EF\cthd.cs" />
@@ -124,7 +124,6 @@
     <Compile Include="EF\reminder.cs" />
     <Compile Include="EF\sanpham.cs" />
     <Compile Include="EF\slide.cs" />
-    <Compile Include="EF\tintuc.cs" />
     <Compile Include="EF\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

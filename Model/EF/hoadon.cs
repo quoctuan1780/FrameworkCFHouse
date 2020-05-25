@@ -6,17 +6,18 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.hoadon")]
+    [Table("coffee-house.hoadon")]
     public partial class hoadon
     {
         [Key]
         [Column(TypeName = "uint")]
         public long mahd { get; set; }
 
-        public int? makh { get; set; }
+        [Column(TypeName = "uint")]
+        public long makh { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? ngaythanhtoan { get; set; }
+        public DateTime ngaythanhtoan { get; set; }
 
         public float? tongtien { get; set; }
 
@@ -26,10 +27,6 @@ namespace Model.EF
         [StringLength(500)]
         public string ghichu { get; set; }
 
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
+        public virtual khachhang khachhang { get; set; }
     }
 }

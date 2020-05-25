@@ -204,16 +204,18 @@
                         if(madh != '')
                         {
                             $.ajax({
-                                url:"{{ route('thanhtoan') }}",
+                                url: "/Donhang/Thanhtoandonhang/" + madh,
                                 method:"GET",
                                 data:{madh:madh},
-                                success:function(data){
-                                    Swal.fire(
-                                        'Thông báo',
-                                        'Xác nhận thanh toán thành công',
-                                        'success'
+                                success: function (data) {
+                                    if (data == "ok") {
+                                        Swal.fire(
+                                            'Thông báo',
+                                            'Xác nhận thanh toán thành công',
+                                            'success'
                                         )
-                                    document.getElementById('btnThanhtoan').disabled = true;
+                                        document.getElementById('btnThanhtoan').disabled = true;
+                                    }
                                 }
                             });
                         }

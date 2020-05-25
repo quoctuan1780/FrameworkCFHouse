@@ -6,7 +6,7 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.phanhoi")]
+    [Table("coffee-house.phanhoi")]
     public partial class phanhoi
     {
         [Key]
@@ -29,12 +29,6 @@ namespace Model.EF
         [Required]
         [StringLength(255)]
         public string noidung { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime ngayph { get; set; }

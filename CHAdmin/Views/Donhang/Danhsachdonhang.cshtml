@@ -40,7 +40,7 @@
                         @foreach (var dh in donhang)
                         {
                             <tr class="odd gradeX" style="text-align: center">
-                                <td><a href="/Donhang/Chitietdonhang?madh=@dh.madh">@dh.madh</a></td>
+                                <td><a href="/Donhang/Chitietdonhang/@dh.madh">@dh.madh</a></td>
                                 <td>@dh.hoten</td>
                                 <td>@dh.ngaydat</td>
                                 <td>@dh.tongtien VND</td>
@@ -110,7 +110,7 @@
                 $("#trangthaithanhtoan").change(function(){
                     var value = $(this).val();
                     $.ajax({
-                        url: "/Donhang/Donhangtheotrangthai?tt=" + value,
+                        url: "../Donhang/Donhangtheotrangthai/" + value,
                         method:"GET",
                         data:{value:value},
                         success:function(data){

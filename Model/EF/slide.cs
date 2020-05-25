@@ -6,7 +6,7 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.slide")]
+    [Table("coffee-house.slide")]
     public partial class slide
     {
         public int id { get; set; }

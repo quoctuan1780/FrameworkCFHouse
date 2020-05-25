@@ -23,7 +23,6 @@ namespace CHAdmin.Controllers
         {
             var dao = new DangnhapDao();
             var result = dao.Login(model.userName, Encrypt.MD5Hash(model.password));
-            if (result == false) Console.WriteLine("Lỗi");
             if (result)
             {
                 var user = dao.getById(model.userName);

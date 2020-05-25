@@ -23,5 +23,11 @@ namespace CHAdmin.Controllers
             var json = JsonConvert.SerializeObject(list);
             return json;
         } 
+
+        public string getLoaikhachhang(int lkh)
+        {
+            AjaxDao ajaxDao = new AjaxDao();
+            return ajaxDao.getLoaikhachhang(lkh);
+        }
     }
 }

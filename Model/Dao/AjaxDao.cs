@@ -67,5 +67,74 @@ namespace Model.Dao
             var json = JsonConvert.SerializeObject(truyvan.ToList());
             return json;
         }
+
+        public string getLoaikhachhang(int lkh)
+        {
+            string json = "";
+            List<KhachhangDao.khachhangtaikhoan> listKhtk = new List<KhachhangDao.khachhangtaikhoan>();
+            if (lkh == 1)
+            {
+                var truyvan = from kh in db.khachhangs
+                              join
+                                tk in db.users on (int)kh.matk equals (int)tk.id
+                              select new
+                              {
+                                  tk.tentk,
+                                  kh.makh,
+                                  kh.hoten,
+                                  kh.diachi,
+                                  kh.gioitinh,
+                                  kh.email,
+                                  kh.sodt
+                              };
+                foreach (var dt in truyvan)
+                {
+                    KhachhangDao.khachhangtaikhoan khtk = new KhachhangDao.khachhangtaikhoan();
+                    khtk.makh = (int)dt.makh;
+                    khtk.tenkh = dt.hoten;
+                    khtk.gioitinh = dt.gioitinh;
+                    khtk.diachi = dt.diachi;
+                    khtk.sdt = dt.sodt;
+                    khtk.email = dt.email;
+                    khtk.tentk = dt.tentk;
+                    listKhtk.Add(khtk);
+                }
+                json = JsonConvert.SerializeObject(listKhtk);
+            }
+            else if(lkh == 2)
+            {
+                var truyvan = from kh in db.khachhangs
+                              where kh.matk == null
+                              select new
+                              {
+                                  kh.makh,
+                                  kh.hoten,
+                                  kh.diachi,
+                                  kh.gioitinh,
+                                  kh.email,
+                                  kh.sodt
+                              };
+                foreach (var dt in truyvan)
+                {
+                    KhachhangDao.khachhangtaikhoan khtk = new KhachhangDao.khachhangtaikhoan();
+                    khtk.makh = (int)dt.makh;
+                    khtk.tenkh = dt.hoten;
+                    khtk.gioitinh = dt.gioitinh;
+                    khtk.diachi = dt.diachi;
+                    khtk.sdt = dt.sodt;
+                    khtk.email = dt.email;
+                    khtk.tentk = "Không có";
+                    listKhtk.Add(khtk);
+                }
+                json = JsonConvert.SerializeObject(listKhtk);
+            }
+            else
+            {
+                KhachhangDao khachhangDao = new KhachhangDao();
+                var listkh = khachhangDao.getKhachhang().ToList();
+                json = JsonConvert.SerializeObject(listkh);
+            }
+            return json;
+        }
     }
 }

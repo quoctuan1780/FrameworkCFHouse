@@ -21,20 +21,18 @@ namespace Model.Dao
 
         public int getDangkinhantinmoi()
         {
-            String n = "2019-12-09";
-            var Date = DateTime.Parse(n);
-            Date.ToString("yyyy-MM-dd");
-            var result = db.dknts.Where(x => x.ngaydk == Date);
+            DateTime date = DateTime.Now.Date;
+            date.ToString("yyyy-MM-dd");
+            var result = db.dknts.Where(x => x.ngaydk == date);
             int count = 0;
             foreach (dknt dh in result) count++;
             return count;
         }
         public int getDonhangmoi()
         {
-            String n = "2019-12-04";
-            var Date = DateTime.Parse(n);
-            Date.ToString("yyyy-MM-dd");
-            var result = db.donhangs.Where(x => x.ngaydat == Date);
+            DateTime date = DateTime.Now.Date;
+            date.ToString("yyyy-MM-dd");
+            var result = db.donhangs.Where(x => x.ngaydat == date);
             int count = 0;
             foreach (donhang dh in result) count++;
             return count;
@@ -42,10 +40,9 @@ namespace Model.Dao
 
         public int getPhanhoimoi()
         {
-            String n = "2019-12-23";
-            var Date = DateTime.Parse(n);
-            Date.ToString("yyyy-MM-dd");
-            var result = db.phanhois.Where(x => x.ngayph == Date);
+            DateTime date = DateTime.Now.Date;
+            date.ToString("yyyy-MM-dd");
+            var result = db.phanhois.Where(x => x.ngayph == date);
             int count = 0;
             foreach (phanhoi dh in result) count++;
             return count;

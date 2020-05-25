@@ -6,7 +6,7 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("coffee-house-repair.reminders")]
+    [Table("coffee-house.reminders")]
     public partial class reminder
     {
         [Column(TypeName = "uint")]
@@ -23,11 +23,5 @@ namespace Model.EF
 
         [Column(TypeName = "timestamp")]
         public DateTime? completed_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? created_at { get; set; }
-
-        [Column(TypeName = "timestamp")]
-        public DateTime? updated_at { get; set; }
     }
 }

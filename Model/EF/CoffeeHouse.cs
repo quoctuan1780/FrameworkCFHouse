@@ -12,12 +12,10 @@ namespace Model.EF
         {
         }
 
-        public virtual DbSet<activation> activations { get; set; }
         public virtual DbSet<ctdh> ctdhs { get; set; }
         public virtual DbSet<cthd> cthds { get; set; }
         public virtual DbSet<dknt> dknts { get; set; }
         public virtual DbSet<donhang> donhangs { get; set; }
-        public virtual DbSet<gioithieu> gioithieux { get; set; }
         public virtual DbSet<hoadon> hoadons { get; set; }
         public virtual DbSet<khachhang> khachhangs { get; set; }
         public virtual DbSet<loaisanpham> loaisanphams { get; set; }
@@ -26,15 +24,11 @@ namespace Model.EF
         public virtual DbSet<reminder> reminders { get; set; }
         public virtual DbSet<sanpham> sanphams { get; set; }
         public virtual DbSet<slide> slides { get; set; }
-        public virtual DbSet<tintuc> tintucs { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<gioithieu> gioithieux { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<activation>()
-                .Property(e => e.code)
-                .IsUnicode(false);
-
             modelBuilder.Entity<dknt>()
                 .Property(e => e.email)
                 .IsUnicode(false);
@@ -45,18 +39,6 @@ namespace Model.EF
 
             modelBuilder.Entity<donhang>()
                 .Property(e => e.ghichu)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<gioithieu>()
-                .Property(e => e.tieude)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<gioithieu>()
-                .Property(e => e.noidung)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<gioithieu>()
-                .Property(e => e.hinhanh)
                 .IsUnicode(false);
 
             modelBuilder.Entity<hoadon>()
@@ -91,6 +73,11 @@ namespace Model.EF
                 .Property(e => e.ghichu)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<khachhang>()
+                .HasMany(e => e.hoadons)
+                .WithRequired(e => e.khachhang)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<loaisanpham>()
                 .Property(e => e.tenloaisp)
                 .IsUnicode(false);
@@ -123,6 +110,16 @@ namespace Model.EF
                 .Property(e => e.tenquyen)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<quyen>()
+                .HasMany(e => e.users)
+                .WithOptional(e => e.quyen)
+                .HasForeignKey(e => e.maquyen);
+
+            modelBuilder.Entity<quyen>()
+                .HasMany(e => e.users1)
+                .WithOptional(e => e.quyen1)
+                .HasForeignKey(e => e.maquyen);
+
             modelBuilder.Entity<reminder>()
                 .Property(e => e.code)
                 .IsUnicode(false);
@@ -143,23 +140,21 @@ namespace Model.EF
                 .Property(e => e.dvt)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<sanpham>()
+                .HasMany(e => e.ctdhs)
+                .WithRequired(e => e.sanpham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<sanpham>()
+                .HasMany(e => e.cthds)
+                .WithRequired(e => e.sanpham)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<slide>()
                 .Property(e => e.link)
                 .IsUnicode(false);
 
             modelBuilder.Entity<slide>()
-                .Property(e => e.hinhanh)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tintuc>()
-                .Property(e => e.tieude)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tintuc>()
-                .Property(e => e.noidung)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<tintuc>()
                 .Property(e => e.hinhanh)
                 .IsUnicode(false);
 
@@ -180,6 +175,23 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<user>()
+                .Property(e => e.hinhanh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<user>()
+                .HasMany(e => e.khachhangs)
+                .WithOptional(e => e.user)
+                .HasForeignKey(e => e.matk);
+
+            modelBuilder.Entity<gioithieu>()
+                .Property(e => e.tieude)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<gioithieu>()
+                .Property(e => e.noidung)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<gioithieu>()
                 .Property(e => e.hinhanh)
                 .IsUnicode(false);
         }
