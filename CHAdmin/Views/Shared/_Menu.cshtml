@@ -1,4 +1,7 @@
-﻿<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+﻿@{ 
+    Model.EF.user tk = Session[CHAdmin.Common.Constants.USER_SESSION] as Model.EF.user;
+}
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -14,18 +17,24 @@
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                @if (tk != null) {
+                    <img src="/Assets/AdminImage/@tk.hinhanh" class="img-circle" alt="Cinque Terre" width="40px" height="40px">
+                    @tk.tentk <i class="fa fa-caret-down"></i>
+                }
+                else { 
+                    <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
+                }
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <a href="/Account/Thongtintaikhoan"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <a href="/Account/Logout"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -96,18 +105,21 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">List User</a>
-                        </li>
-                        <li>
-                            <a href="#">Add User</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+                @if (tk.maquyen == 1)
+                {
+                    <li>
+                        <a href="#"><i class="fa fa-users fa-fw"></i> Tài khoản<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/Account/Danhsachtaikhoan">Danh sách tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="#">Thêm tài khoản</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                }
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

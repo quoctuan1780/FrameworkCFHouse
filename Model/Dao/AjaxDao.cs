@@ -10,11 +10,11 @@ namespace Model.Dao
 {
     public class AjaxDao
     {
-        CoffeeHouse db = null;
+        CoffeeHouseDbContext db = null;
 
         public AjaxDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public struct doanhthutheosp{

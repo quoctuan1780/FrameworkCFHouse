@@ -9,10 +9,10 @@ namespace Model.Dao
 {
     public class PhanhoiDao
     {
-        CoffeeHouse db = null;
+        CoffeeHouseDbContext db = null;
         public PhanhoiDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public IQueryable<phanhoi> getPhanhoimoi()

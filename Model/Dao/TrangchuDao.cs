@@ -12,11 +12,11 @@ namespace Model.Dao
 {
     public class TrangchuDao
     {
-        CoffeeHouse db = null;
+        CoffeeHouseDbContext db = null;
 
         public TrangchuDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public int getDangkinhantinmoi()

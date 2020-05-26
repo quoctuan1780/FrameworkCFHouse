@@ -25,11 +25,9 @@ namespace CHAdmin.Controllers
             var result = dao.Login(model.userName, Encrypt.MD5Hash(model.password));
             if (result)
             {
-                var user = dao.getById(model.userName);
-                var userSession = new Userlogin();
-                userSession.userName = user.email;
-                userSession.UserID = user.id;
-                Session.Add(Constants.USER_SESSION, userSession);
+                var user = dao.getThongtintaikhoan(model.userName);
+                dao.setTrangthaidangnhap(user, 1);
+                Session.Add(Constants.USER_SESSION, user);
                 return RedirectToAction("Index", "Admin");
             }
             else
@@ -37,6 +35,28 @@ namespace CHAdmin.Controllers
                 ModelState.AddModelError("", "Email hoặc password không đúng");
             }
             return View(model);
+        }
+
+
+        public ActionResult Thongtintaikhoan()
+        { 
+            return View();
+        }
+
+        public ActionResult Danhsachtaikhoan()
+        {
+            DangnhapDao dangnhapDao = new DangnhapDao();
+            ViewData["danhsachtk"] = dangnhapDao.getDanhsachtaikhoan();
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            DangnhapDao dangnhapDao = new DangnhapDao();
+            user taikhoan = Session[Constants.USER_SESSION] as user;
+            dangnhapDao.setTrangthaidangnhap(taikhoan, 0);
+            Session.Clear();
+            return Redirect("/Account/Login");
         }
     }
 }

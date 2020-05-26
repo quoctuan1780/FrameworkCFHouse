@@ -23,6 +23,8 @@ namespace Model.EF
 
         public double gia { get; set; }
 
+        public virtual donhang donhang { get; set; }
+
         public virtual sanpham sanpham { get; set; }
     }
 }

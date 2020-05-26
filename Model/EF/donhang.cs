@@ -9,6 +9,12 @@ namespace Model.EF
     [Table("coffee-house.donhang")]
     public partial class donhang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public donhang()
+        {
+            ctdhs = new HashSet<ctdh>();
+        }
+
         [Key]
         [Column(TypeName = "uint")]
         public long madh { get; set; }
@@ -28,6 +34,9 @@ namespace Model.EF
         public string ghichu { get; set; }
 
         public int tttt { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ctdh> ctdhs { get; set; }
 
         public virtual khachhang khachhang { get; set; }
     }

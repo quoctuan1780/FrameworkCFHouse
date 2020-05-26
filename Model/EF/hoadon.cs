@@ -9,6 +9,12 @@ namespace Model.EF
     [Table("coffee-house.hoadon")]
     public partial class hoadon
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public hoadon()
+        {
+            cthds = new HashSet<cthd>();
+        }
+
         [Key]
         [Column(TypeName = "uint")]
         public long mahd { get; set; }
@@ -26,6 +32,9 @@ namespace Model.EF
 
         [StringLength(500)]
         public string ghichu { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cthd> cthds { get; set; }
 
         public virtual khachhang khachhang { get; set; }
     }

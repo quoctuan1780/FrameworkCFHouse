@@ -9,10 +9,10 @@ namespace Model.Dao
 {
     public class LoaisanphamDao
     {
-        CoffeeHouse db;
+        CoffeeHouseDbContext db;
         public LoaisanphamDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public IQueryable<loaisanpham> getLoaisanpham()

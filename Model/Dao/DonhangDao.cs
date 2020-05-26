@@ -11,11 +11,11 @@ namespace Model.Dao
 {
     public class DonhangDao
     {
-        CoffeeHouse db;
+        CoffeeHouseDbContext db;
 
         public DonhangDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public struct donhang
@@ -159,7 +159,7 @@ namespace Model.Dao
             var ctdh = db.ctdhs.Where(x => x.madh == madh);
             int mahd;
             Model.EF.donhang dh;
-            using (var context = new CoffeeHouse())
+            using (var context = new CoffeeHouseDbContext())
             {
                 dh = context.donhangs.Where(x => x.madh == madh).FirstOrDefault();
                 hoadon hd = new hoadon();

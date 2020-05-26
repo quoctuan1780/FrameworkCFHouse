@@ -110,7 +110,7 @@
     <Compile Include="Dao\LoaisanphamDao.cs" />
     <Compile Include="Dao\PhanhoiDao.cs" />
     <Compile Include="Dao\TrangchuDao.cs" />
-    <Compile Include="EF\CoffeeHouse.cs" />
+    <Compile Include="EF\CoffeeHouseDbContext.cs" />
     <Compile Include="EF\ctdh.cs" />
     <Compile Include="EF\cthd.cs" />
     <Compile Include="EF\dknt.cs" />

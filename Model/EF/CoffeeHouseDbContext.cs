@@ -5,9 +5,9 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class CoffeeHouse : DbContext
+    public partial class CoffeeHouseDbContext : DbContext
     {
-        public CoffeeHouse()
+        public CoffeeHouseDbContext()
             : base("name=CoffeeHouse")
         {
         }
@@ -41,6 +41,11 @@ namespace Model.EF
                 .Property(e => e.ghichu)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<donhang>()
+                .HasMany(e => e.ctdhs)
+                .WithRequired(e => e.donhang)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<hoadon>()
                 .Property(e => e.httt)
                 .IsUnicode(false);
@@ -48,6 +53,11 @@ namespace Model.EF
             modelBuilder.Entity<hoadon>()
                 .Property(e => e.ghichu)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<hoadon>()
+                .HasMany(e => e.cthds)
+                .WithRequired(e => e.hoadon)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<khachhang>()
                 .Property(e => e.hoten)

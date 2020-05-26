@@ -9,11 +9,11 @@ namespace Model.Dao
 {
     public class KhachhangDao
     {
-        CoffeeHouse db = null;
+        CoffeeHouseDbContext db = null;
 
         public KhachhangDao()
         {
-            db = new CoffeeHouse();
+            db = new CoffeeHouseDbContext();
         }
 
         public struct khachhangtaikhoan

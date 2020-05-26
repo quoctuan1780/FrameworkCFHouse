@@ -16,6 +16,19 @@ namespace CHAdmin
             // Nhóm route admin
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Route tài khoản
+            routes.MapRoute("Thongtintaikhoan",
+                "Account/Thongtintaikhoan",
+                new { controller = "Account", action = "Thongtintaikhoan" });
+
+            routes.MapRoute("Danhsachtaikhoan",
+                "Account/Danhsachtaikhoan",
+                new { controller = "Account", action = "Danhsachtaikhoan" });
+
+            routes.MapRoute("Dangxuat",
+                "Account/Logout",
+                new { controller = "Account", action = "Logout"});
+
             //Route Ajax
             routes.MapRoute(
                 "Loaikhachhang",
