@@ -13,7 +13,7 @@ namespace CHAdmin
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            // Nhóm route admin
+            //Route admin
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             //Route tài khoản
@@ -34,6 +34,32 @@ namespace CHAdmin
                 "Loaikhachhang",
                 "Ajax/getLoaikhachhang/{lkh}",
                 new {controller = "Ajax", action = "getLoaikhachhang", lkh = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                "Noidungphanhoi",
+                "Ajax/getNoidungphanhoi/{maph}",
+                new { controller = "Ajax", action = "getNoidungphanhoi", maph = UrlParameter.Optional }
+                );
+
+            //Route sản phẩm
+            routes.MapRoute("Danhsachsanpham",
+                "Sanpham/Danhsachsanpham",
+                new { controller = "Sanpham", action = "Danhsachsanpham" }
+                );
+
+            routes.MapRoute("Themsanpham",
+                "Sanpham/Themsanpham",
+                new { controller = "Sanpham", action = "Themsanpham" }
+                );
+
+            routes.MapRoute("Suasanpham",
+                "Sanpham/Suasanpham/{masp}",
+                new { controller = "Sanpham", action = "Suasanpham", masp = UrlParameter.Optional }
+                );
+            routes.MapRoute("Xoasanpham",
+                "Sanpham/Xoasanpham/{masp}",
+                new { controller = "Sanpham", action = "Xoasanpham", masp = UrlParameter.Optional }
                 );
 
             //Route loại sản phẩm
@@ -69,8 +95,37 @@ namespace CHAdmin
             routes.MapRoute(
                 "Thanhtoandonhang",
                 "Donhang/Thanhtoandonhang/{madh}",
-                new { controller = "Donhang", action = "Thanhtoandonhang" }
+                new { controller = "Donhang", action = "Thanhtoandonhang", madh = UrlParameter.Optional }
                 );
+
+            routes.MapRoute(
+                "Xoadonhang",
+                "Donhang/Xoadonhang/{madh}",
+                new { controller = "Donhang", action = "Xoadonhang", madh = UrlParameter.Optional }
+                );
+            //Route Thống kê
+            routes.MapRoute(
+                "Doanhthutheosanpham",
+                "Thongke/Doanhthutheosanpham/{nam}",
+                new { controller = "Thongke", action = "Doanhthutheosanpham", nam = UrlParameter.Optional }
+                );
+            //Route Hóa đơn
+            routes.MapRoute("Danhsachhoadon",
+                "Hoadon/Danhsachhoadon",
+                new { controller = "Hoadon", action = "Danhsachhoadon" });
+
+            routes.MapRoute("Chitiethoadon",
+                "Ajax/getChitiethoadon/{mahd}",
+                new { controller = "Ajax", action = "getChitiethoadon", mahd = UrlParameter.Optional });
+
+            //Route phản hồi
+            routes.MapRoute("Danhsachphanhoi", 
+                "Phanhoi/Danhsachphanhoi",
+                new { controller = "Phanhoi", action = "Danhsachphanhoi" });
+
+            routes.MapRoute("Xoaphanhoi",
+                "Phanhoi/Xoaphanhoi/{maph}",
+                new { controller = "Phanhoi", action = "Xoaphanhoi", maph = UrlParameter.Optional });
 
             //Route khách hàng
             routes.MapRoute(
@@ -88,6 +143,7 @@ namespace CHAdmin
                 "Dangkinhantin",
                 "Khachhang/Dangkinhantin",
                 new { controller = "Khachhang", action = "Dangkinhantin" });
+
             //Route Trang chủ
             routes.MapRoute(
                 "trangchu",
@@ -99,7 +155,6 @@ namespace CHAdmin
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
-            //Kết thúc nhóm route admin
         }
     }
 }

@@ -9,10 +9,10 @@ namespace CHAdmin.Controllers
 {
     public class DonhangController : BaseController
     {
+        DonhangDao donhangDao = new DonhangDao();
         // GET: Donhang
         public ActionResult Danhsachdonhang()
         {
-            DonhangDao donhangDao = new DonhangDao();
             var donhang = donhangDao.getDonhang();
             ViewData["donhang"] = donhang;
             return View();
@@ -22,7 +22,6 @@ namespace CHAdmin.Controllers
         public ActionResult Chitietdonhang(string madh)
         {
             int ma = int.Parse(madh);
-            DonhangDao donhangDao = new DonhangDao();
             var khachhang = donhangDao.getKhachhangDonhang(ma);
             var ctdh = donhangDao.getChitietdonhang(ma);
             ViewData["khachhangdonhang"] = khachhang;
@@ -33,7 +32,6 @@ namespace CHAdmin.Controllers
 
         public string Thanhtoandonhang(int madh)
         {
-            DonhangDao donhangDao = new DonhangDao();
             bool kiemtraThanhtoan = donhangDao.Thanhtoandonhang(madh);
             if (kiemtraThanhtoan) return "ok";
             else
@@ -44,6 +42,12 @@ namespace CHAdmin.Controllers
             AjaxDao ajaxDao = new AjaxDao();
             string json = ajaxDao.getTimkiemtrangthaiAjax(tt);
             return json;
+        }
+
+        public int Xoadonhang(int madh)
+        {
+            int ketqua = donhangDao.Xoadonhang(madh);
+            return ketqua;
         }
     }
 }

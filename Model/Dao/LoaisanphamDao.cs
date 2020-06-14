@@ -48,7 +48,26 @@ namespace Model.Dao
                 return db.SaveChanges();
             }
             else
-            return 0;
+            {
+                foreach(var sp in listsp)
+                {
+                    var kiemtrasanphamCthd = from ct in db.cthds
+                                         where ct.masp == sp.masp
+                                         select ct;
+                    if (kiemtrasanphamCthd.ToList().Count > 0) return 0;
+                    
+                    var kiemtrasanphamCtdh = from ct in db.ctdhs
+                                                where ct.masp == sp.masp
+                                                select ct;
+                    if (kiemtrasanphamCtdh.ToList().Count > 0) return 0;
+                    
+                }
+                db.sanphams.RemoveRange(db.sanphams.Where(x => x.maloaisp == maloaisp));
+                var lsp = db.loaisanphams.Where(x => x.maloaisp == maloaisp).FirstOrDefault();
+                db.loaisanphams.Attach(lsp);
+                db.loaisanphams.Remove(lsp);
+                return db.SaveChanges(); 
+            }    
         }
     }
 }
