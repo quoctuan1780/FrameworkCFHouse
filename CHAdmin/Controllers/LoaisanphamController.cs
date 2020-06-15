@@ -40,21 +40,11 @@ namespace CHAdmin.Controllers
             }
         }
 
-        public ActionResult Xoaloaisanpham(int maloaisp)
+        public int Xoaloaisanpham(int maloaisp)
         {
             LoaisanphamDao loaisanphamDao = new LoaisanphamDao();
             int ketqua = loaisanphamDao.getXoaloaisanpham(maloaisp);
-            if (ketqua != 0)
-            {
-                ViewData["thongbaoxoa"] = "xoathanhcong";
-                return Redirect("/Loaisanpham/Danhsachloaisanpham");
-            }
-            else
-            {
-                ViewData["thongbaoxoa"] = "xoakhongthanhcong";
-                return Redirect("/Loaisanpham/Danhsachloaisanpham");
-            }
-            
+            return ketqua;
         }
     }
 }

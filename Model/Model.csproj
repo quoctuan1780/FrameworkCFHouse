@@ -106,9 +106,12 @@
     <Compile Include="Dao\AjaxDao.cs" />
     <Compile Include="Dao\DangnhapDao.cs" />
     <Compile Include="Dao\DonhangDao.cs" />
+    <Compile Include="Dao\HoadonDao.cs" />
     <Compile Include="Dao\KhachhangDao.cs" />
     <Compile Include="Dao\LoaisanphamDao.cs" />
     <Compile Include="Dao\PhanhoiDao.cs" />
+    <Compile Include="Dao\SanphamDao.cs" />
+    <Compile Include="Dao\ThongkeDao.cs" />
     <Compile Include="Dao\TrangchuDao.cs" />
     <Compile Include="EF\CoffeeHouseDbContext.cs" />
     <Compile Include="EF\ctdh.cs" />

@@ -186,5 +186,16 @@ namespace Model.Dao
             db.SaveChanges();
             return true;
         }
+        public int Xoadonhang(int madh)
+        {
+            var donhang = db.donhangs.Where(x => x.madh == madh).FirstOrDefault();
+            if(donhang.tttt == 0)
+            {
+                db.donhangs.Attach(donhang);
+                db.donhangs.Remove(donhang);
+                return db.SaveChanges();
+            }
+            return 0;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,27 @@ namespace Model.Dao
         {
             db = new CoffeeHouseDbContext();
         }
-
+        
         public IQueryable<phanhoi> getPhanhoimoi()
         {
-            string date = "2019-12-23";
-            var Date = DateTime.Parse(date);
+            DateTime Date = DateTime.Now.Date;
             Date.ToString("yyyy-MM-dd");
             var phm = db.phanhois.Where(x => x.ngayph == Date);
             return phm;
+        }
+
+        public IQueryable<phanhoi> getDanhsachphanhoi()
+        {
+            var phanhoi = db.phanhois;
+            return phanhoi;
+        }
+
+        public int getXoaphanhoi(int maph)
+        {
+            var phanhoi = db.phanhois.Where(x => x.maph == maph).FirstOrDefault();
+            db.phanhois.Attach(phanhoi);
+            db.phanhois.Remove(phanhoi);
+            return db.SaveChanges();
         }
     }
 }
