@@ -10,10 +10,10 @@ namespace CHAdmin.Controllers
 {
     public class LoaisanphamController : BaseController
     {
+        LoaisanphamDao loaisanphamDao = new LoaisanphamDao();
         // GET: Loaisanpham
         public ActionResult Danhsachloaisanpham()
         {
-            LoaisanphamDao loaisanphamDao = new LoaisanphamDao();
             ViewData["loaisp"] = loaisanphamDao.getLoaisanpham();
             return View();
         }
@@ -26,7 +26,6 @@ namespace CHAdmin.Controllers
         [HttpPost]
         public ActionResult Themloaisanpham(loaisanpham lsp)
         {
-            LoaisanphamDao loaisanphamDao = new LoaisanphamDao();
             int ketqua = loaisanphamDao.postLoaisanpham(lsp);
             if (ketqua != 0)
             {
@@ -42,9 +41,36 @@ namespace CHAdmin.Controllers
 
         public int Xoaloaisanpham(int maloaisp)
         {
-            LoaisanphamDao loaisanphamDao = new LoaisanphamDao();
             int ketqua = loaisanphamDao.getXoaloaisanpham(maloaisp);
             return ketqua;
+        }
+
+        public ActionResult Sualoaisanpham(int maloaisp)
+        {
+            ViewData["loaisanpham"] = loaisanphamDao.getLoaisanpham(maloaisp);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Sualoaisanpham(loaisanpham lsp)
+        {
+            loaisanpham loaisp = new loaisanpham();
+            lsp.maloaisp = int.Parse(Request["maloaisp"].ToString());
+            lsp.tenloaisp = Request["tenloaisp"].ToString();
+            lsp.hinhanh = null;
+            lsp.mota = null;
+            if (loaisanphamDao.Kiemtratontailoaisanpham(lsp))
+            {
+                ViewData["thongbao"] = "error";
+                ViewData["loaisanpham"] = loaisanphamDao.getLoaisanpham((int)lsp.maloaisp);
+            }
+            else
+            {
+                int ketqua = loaisanphamDao.postSualoaisanpham(lsp);
+                if (ketqua > 0) ViewData["thongbao"] = "ok";
+                ViewData["loaisanpham"] = loaisanphamDao.getLoaisanpham((int)lsp.maloaisp);
+            }
+            return View();
         }
     }
 }

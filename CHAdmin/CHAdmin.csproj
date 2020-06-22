@@ -1624,6 +1624,15 @@
     <Content Include="Views\Hoadon\Danhsachhoadon.cshtml" />
     <Content Include="Views\Phanhoi\Danhsachphanhoi.cshtml" />
     <Content Include="Views\Thongke\Thongketheobieudo.cshtml" />
+    <Content Include="Views\Thongke\Thongketheohoadon.cshtml" />
+    <Content Include="Views\Account\Doimatkhau.cshtml" />
+    <Content Include="Views\Account\Quenmatkhau.cshtml" />
+    <Content Include="Views\Account\Khoiphucmatkhau.cshtml" />
+    <Content Include="Views\Account\Suataikhoan.cshtml" />
+    <Content Include="Views\Account\Themtaikhoan.cshtml" />
+    <Content Include="Views\Loaisanpham\Sualoaisanpham.cshtml" />
+    <Content Include="Views\Phanhoi\Phanhoikhachhang.cshtml" />
+    <Content Include="Views\Khachhang\Guitin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\bower_components\sweetalert\src\core.ts" />

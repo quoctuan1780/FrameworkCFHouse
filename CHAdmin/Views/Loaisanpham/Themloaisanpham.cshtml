@@ -20,7 +20,7 @@
                 @if (thongbao != null && thongbao.Equals("ok")) {
                     <div class="alert alert-success">Thêm loại sản phẩm thành công</div>
                 }
-                @if (thongbao != null && thongbao.Equals("error"))
+                else if (thongbao != null && thongbao.Equals("error"))
                 {
                     <div class="alert alert-danger">Loại sản phẩm đã tồn tại trong hệ thống</div>
                 }

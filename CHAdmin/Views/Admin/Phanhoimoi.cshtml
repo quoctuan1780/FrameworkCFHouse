@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Thông tin phản hồi mới</h1
+                <h1 class="page-header">Thông tin phản hồi mới</h1>
             </div>
             <!-- /.col-lg-12 -->
             <div>
@@ -22,18 +22,20 @@
                             <th>Khách hàng</th>
                             <th>Ngày phản hồi</th>
                             <th>Xóa</th>
+                            <th>Phản hồi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach(var phm in phanhoimoi){
                             <div hidden>@row++</div>
                             <tr class="odd gradeX" style="text-align: center">
-                            <td><a href="javascript:void(0)" onclick="showContent(@phm.maph)">@phm.vande</a></td>
-                            <td>@phm.email</td>
-                            <td>@phm.hoten</td>
-                            <td>@phm.ngayph</td>
-                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="javascript:void(0)" onclick="ConfirmDelete(@phm.maph)">Xóa</a></td>
-                        </tr>
+                                <td><a href="javascript:void(0)" onclick="showContent(@phm.maph)">@phm.vande</a></td>
+                                <td>@phm.email</td>
+                                <td>@phm.hoten</td>
+                                <td>@phm.ngayph</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="javascript:void(0)" onclick="ConfirmDelete(@phm.maph)">Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="/Phanhoi/Phanhoikhachhang?email=@phm.email">Phản hồi</a></td>
+                            </tr>
                         }
                     </tbody>
                 </table>

@@ -58,7 +58,7 @@
                             <td class="alert alert-success">Đang hoạt động</td>
                         }
                         @*{{-- <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ route('xoa-tai-khoan', $tk->id) }}" onclick="return ConfirmDelete()"> Xóa</a></td> --}}*@
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('sua-tai-khoan', $tk->id)}}"> Sửa</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#" onclick="Suataikhoan('@tk.email', @tk.maquyen)"> Sửa</a></td>
                     </tr>
                     }
                 </tbody>
@@ -70,13 +70,16 @@
 </div>
 
 @section Scripts{
-<script>
-        function ConfirmDelete()
+    <script>
+        function Suataikhoan(email, maquyen)
         {
-            var x = confirm("Bạn có chắc chắn muốn xóa tài khoản này ?");
-            if (x)
-                return true;
-            return false;
+            if (maquyen === 2) {
+                Swal.fire(
+                    'Thông báo',
+                    'Đây là tài khoản khách hàng, hãy để khách hàng tự cập nhật',
+                    'warning'
+                );
+            } else window.location = "https://localhost:44392/Account/Suataikhoan?email=" + email;
         }
-</script>
+    </script>
 }

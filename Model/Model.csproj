@@ -104,7 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\AjaxDao.cs" />
-    <Compile Include="Dao\DangnhapDao.cs" />
+    <Compile Include="Dao\ReminderDao.cs" />
+    <Compile Include="Dao\TaikhoanDao.cs" />
     <Compile Include="Dao\DonhangDao.cs" />
     <Compile Include="Dao\HoadonDao.cs" />
     <Compile Include="Dao\KhachhangDao.cs" />
