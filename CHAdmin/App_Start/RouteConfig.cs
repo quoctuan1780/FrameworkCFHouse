@@ -27,7 +27,15 @@ namespace CHAdmin
 
             routes.MapRoute("Dangxuat",
                 "Account/Logout",
-                new { controller = "Account", action = "Logout"});
+                new { controller = "Account", action = "Logout" });
+
+            routes.MapRoute("Quanmatkhau",
+                "Account/Quanmatkhau",
+                new { controller = "Account", action = "Quenmatkhau"});
+
+            routes.MapRoute("Suataikhoan",
+                "Account/Suataikhoan/{email}",
+                new { controller = "Account", action = "Suataikhoan", email = UrlParameter.Optional });
 
             //Route Ajax
             routes.MapRoute(
@@ -75,6 +83,9 @@ namespace CHAdmin
                 "Loaisanpham/Xoaloaisanpham/{maloaisp}",
                 new { controller = "Loaisanpham", action = "Xoaloaisanpham", maloaisp = UrlParameter.Optional });
 
+            routes.MapRoute("Sualoaisanpham",
+                "Loaisanpham/Sualoaisanpham/{maloaisp}",
+                new { controller = "Loaisanpham", action = "Sualoaisanpham", maloaisp = UrlParameter.Optional });
             //Route đơn hàng
             routes.MapRoute(
                 "Danhsachdonhang",
@@ -108,6 +119,12 @@ namespace CHAdmin
                 "Doanhthutheosanpham",
                 "Thongke/Doanhthutheosanpham/{nam}",
                 new { controller = "Thongke", action = "Doanhthutheosanpham", nam = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                "Doanhthutheohoadon",
+                "Thongke/Doanhthutheohoadon/{date}/{value}",
+                new { controller = "Thongke", action = "Doanhthutheohoadon", date = UrlParameter.Optional,value = UrlParameter.Optional  }
                 );
             //Route Hóa đơn
             routes.MapRoute("Danhsachhoadon",

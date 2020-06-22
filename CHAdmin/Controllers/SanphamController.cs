@@ -74,6 +74,8 @@ namespace CHAdmin.Controllers
         public ActionResult Suasanpham(sanpham sanpham)
         {
             SanphamDao sanphamDao = new SanphamDao();
+            if (sanpham.hinhanh == "")
+                sanpham.hinhanh = Request["hinhanhcu"].ToString();
             int ketqua = sanphamDao.postSuasanpham(sanpham);
             if (ketqua > 0)
             {
