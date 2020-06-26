@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CHAdmin.Controllers
 {
-    public class PhanhoiController : Controller
+    public class PhanhoiController : BaseController
     {
         PhanhoiDao phanhoiDao = new PhanhoiDao();
         // GET: Phanhoi

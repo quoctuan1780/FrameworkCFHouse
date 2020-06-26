@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace CHAdmin.Controllers
 {
-    public class ThongkeController : Controller
+    public class ThongkeController : BaseController
     {
         ThongkeDao thongkeDao = new ThongkeDao();
         // GET: Thongke

@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace CHAdmin.Controllers
 {
-    public class AjaxController : Controller
+    public class AjaxController : BaseController
     {
         AjaxDao ajaxDao = new AjaxDao();
         // GET: Ajax
