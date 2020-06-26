@@ -10,8 +10,8 @@ namespace CHAdmin.Models
     {
         [Required(ErrorMessage = "Mời bạn nhập tên đăng nhập")]
         public string userName { get; set; }
-        [Required(ErrorMessage = "Mời bạn nhập mật khẩu")]
 
+        [Required(ErrorMessage = "Mời bạn nhập mật khẩu")]
         public string password { get; set; }
 
     }
