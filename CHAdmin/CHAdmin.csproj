@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44392</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -217,8 +217,12 @@
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DonhangController.cs" />
+    <Compile Include="Controllers\HoadonController.cs" />
     <Compile Include="Controllers\KhachhangController.cs" />
     <Compile Include="Controllers\LoaisanphamController.cs" />
+    <Compile Include="Controllers\PhanhoiController.cs" />
+    <Compile Include="Controllers\SanphamController.cs" />
+    <Compile Include="Controllers\ThongkeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2257,6 +2261,21 @@
     <Content Include="Views\Loaisanpham\Themloaisanpham.cshtml" />
     <Content Include="Views\Account\Thongtintaikhoan.cshtml" />
     <Content Include="Views\Account\Danhsachtaikhoan.cshtml" />
+    <Content Include="Views\Sanpham\Danhsachsanpham.cshtml" />
+    <Content Include="Views\Sanpham\Themsanpham.cshtml" />
+    <Content Include="Views\Sanpham\Suasanpham.cshtml" />
+    <Content Include="Views\Hoadon\Danhsachhoadon.cshtml" />
+    <Content Include="Views\Phanhoi\Danhsachphanhoi.cshtml" />
+    <Content Include="Views\Thongke\Thongketheobieudo.cshtml" />
+    <Content Include="Views\Thongke\Thongketheohoadon.cshtml" />
+    <Content Include="Views\Account\Doimatkhau.cshtml" />
+    <Content Include="Views\Account\Quenmatkhau.cshtml" />
+    <Content Include="Views\Account\Khoiphucmatkhau.cshtml" />
+    <Content Include="Views\Account\Suataikhoan.cshtml" />
+    <Content Include="Views\Account\Themtaikhoan.cshtml" />
+    <Content Include="Views\Loaisanpham\Sualoaisanpham.cshtml" />
+    <Content Include="Views\Phanhoi\Phanhoikhachhang.cshtml" />
+    <Content Include="Views\Khachhang\Guitin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\bower_components\sweetalert\src\core.ts" />
@@ -2401,8 +2420,7 @@
           <IISUrl>https://localhost:44392/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>https://localhost:5001/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

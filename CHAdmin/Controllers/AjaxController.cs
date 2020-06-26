@@ -8,8 +8,9 @@ using Newtonsoft.Json;
 
 namespace CHAdmin.Controllers
 {
-    public class AjaxController : Controller
+    public class AjaxController : BaseController
     {
+        AjaxDao ajaxDao = new AjaxDao();
         // GET: Ajax
         public ActionResult Index()
         {
@@ -18,7 +19,6 @@ namespace CHAdmin.Controllers
 
         public string getSanpham()
         {
-            AjaxDao ajaxDao = new AjaxDao();
             var list = ajaxDao.GetDoanhthutheosanpham();
             var json = JsonConvert.SerializeObject(list);
             return json;
@@ -26,8 +26,19 @@ namespace CHAdmin.Controllers
 
         public string getLoaikhachhang(int lkh)
         {
-            AjaxDao ajaxDao = new AjaxDao();
             return ajaxDao.getLoaikhachhang(lkh);
+        }
+
+        public string getChitiethoadon(int mahd)
+        {
+            return ajaxDao.getChitiethoadon(mahd);
+        }
+
+        public string getNoidungphanhoi(int maph)
+        {
+            AjaxDao ajaxDao = new AjaxDao();
+            string phanhoi = ajaxDao.getNoidungphanhoi(maph);
+            return phanhoi;
         }
     }
 }

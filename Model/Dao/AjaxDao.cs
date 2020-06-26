@@ -136,5 +136,48 @@ namespace Model.Dao
             }
             return json;
         }
+
+        public string getChitiethoadon(int mahd)
+        {
+            string json = "";
+            List<DonhangDao.chitietdonhang> chitiethoadons = new List<DonhangDao.chitietdonhang>();
+            var truyvan = (from hd in db.hoadons join
+                              ct in db.cthds on hd.mahd equals ct.mahd
+                                                       join
+                            sp in db.sanphams on ct.masp equals sp.masp
+                           where hd.mahd == mahd
+                           select new
+                           {
+                               sp.tensp,
+                               sp.hinhanh,
+                               ct.soluong,
+                               ct.gia,
+                               hd.ngaythanhtoan,
+                               hd.tongtien,
+                               hd.httt
+                           });
+
+            foreach (var dulieu in truyvan)
+            {
+                DonhangDao.chitietdonhang ct = new DonhangDao.chitietdonhang();
+                ct.tensp = dulieu.tensp;
+                ct.hinhanh = dulieu.hinhanh;
+                ct.soluong = dulieu.soluong;
+                ct.dongia = dulieu.gia;
+                ct.thanhtien = (double)dulieu.tongtien;
+                ct.tttt = 1;
+                ct.ngaydat = dulieu.ngaythanhtoan.ToString("dd/MM/yyyy");
+                ct.httt = dulieu.httt;
+                chitiethoadons.Add(ct);
+            }
+            json = JsonConvert.SerializeObject(chitiethoadons   );
+            return json;
+        }
+
+        public string getNoidungphanhoi(int maph)
+        {
+            var phanhoi = db.phanhois.Where(x => x.maph == maph).ToList();
+            return JsonConvert.SerializeObject(phanhoi);
+        }
     }
 }
